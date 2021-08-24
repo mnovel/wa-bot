@@ -3,8 +3,8 @@
 Clone this project
 
 ```bash
-> git clone https://github.com/ArugaZ/whatsapp-bot.git
-> cd whatsapp-bot
+> git clone https://github.com/mnovel/wa-bot
+> cd wa-bot
 ```
 
 Install the dependencies:
