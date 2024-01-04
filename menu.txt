@@ -1,0 +1,73 @@
+Creator:
+// -❥ *${prefix}cooltext*
+-❥ *${prefix}sticker*
+-❥ *${prefix}stickergif*
+-❥ *${prefix}stickergiphy*
+// -❥ *${prefix}meme*
+// -❥ *${prefix}quotemaker*
+// -❥ *${prefix}nulis*
+
+// Islam:
+// -❥ *${prefix}infosurah*
+// -❥ *${prefix}surah*
+// -❥ *${prefix}tafsir*
+// -❥ *${prefix}ALaudio*
+// -❥ *${prefix}jsolat*
+
+// 18+:
+// -❥ *${prefix}nekopoi*
+
+// Fun Menu (Group):
+// -❥ *${prefix}simisimi*
+// -❥ *${prefix}katakasar*
+// 	┷-❥ *${prefix}klasmen*
+
+// Download:
+// -❥ *${prefix}ytmp3*
+// -❥ *${prefix}ytmp4*
+// -❥ *${prefix}facebook*
+
+// Primbon:
+// -❥ *${prefix}cekzodiak*
+// -❥ *${prefix}artinama*
+// -❥ *${prefix}cekjodoh*
+
+// Search Any:
+// -❥ *${prefix}dewabatch*
+// -❥ *${prefix}images*
+// -❥ *${prefix}sreddit*
+// -❥ *${prefix}resep*
+// -❥ *${prefix}stalkig*
+// -❥ *${prefix}wiki*
+// -❥ *${prefix}cuaca*
+// -❥ *${prefix}chord*
+// -❥ *${prefix}lirik*
+// -❥ *${prefix}ss*
+// -❥ *${prefix}play*
+// -❥ *${prefix}movie*
+// -❥ *${prefix}whatanime*
+
+// Random Teks:
+// -❥ *${prefix}motivasi*
+// -❥ *${prefix}howgay*
+// -❥ *${prefix}fakta*
+// -❥ *${prefix}pantun*
+// -❥ *${prefix}katabijak*
+// -❥ *${prefix}quote*
+// -❥ *${prefix}cerpen*
+// -❥ *${prefix}cersex*
+// -❥ *${prefix}puisi*
+
+// Random Images:
+// -❥ *${prefix}anime*
+// -❥ *${prefix}kpop*
+// -❥ *${prefix}memes*
+
+// Lain-lain:
+// -❥ *${prefix}tts*
+// -❥ *${prefix}translate*
+// -❥ *${prefix}resi*
+// -❥ *${prefix}covidindo*
+// -❥ *${prefix}ceklokasi*
+// -❥ *${prefix}shortlink*
+// -❥ *${prefix}bapakfont*

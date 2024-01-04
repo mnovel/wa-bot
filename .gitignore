@@ -1,0 +1,4 @@
+_IGNORE_PELL/
+.node-presist/
+node_modules/
+pell.data.json

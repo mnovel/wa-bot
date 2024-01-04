@@ -3,21 +3,13 @@ module.exports = options = (headless, start) => {
         sessionId: 'PELL',
         headless: headless,
         qrTimeout: 0,
+        multiDevice: true,
         authTimeout: 0,
         restartOnCrash: start,
         cacheEnabled: false,
         useChrome: true,
         killProcessOnBrowserClose: true,
         throwErrorOnTosBlock: false,
-        chromiumArgs: [
-            '--no-sandbox',
-            '--disable-setuid-sandbox',
-            '--aggressive-cache-discard',
-            '--disable-cache',
-            '--disable-application-cache',
-            '--disable-offline-load-stale-cache',
-            '--disk-cache-size=0'
-        ]
     }
     return options
 }

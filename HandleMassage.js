@@ -10,6 +10,8 @@ const {
 const {
     removeBackgroundFromImageBase64
 } = require('remove.bg')
+
+
 const setting = JSON.parse(fs.readFileSync('./settings/settings.json'))
 const banned = JSON.parse(fs.readFileSync('./settings/banned.json'))
 
@@ -30,6 +32,7 @@ const {
 } = require('./utils')
 
 const {
+    menuId,
     pellapi
 } = require('./lib')
 
@@ -91,7 +94,6 @@ module.exports = HandleMsg = async (pell, message) => {
         if (isCmd && msgFilter.isFiltered(from) && isGroupMsg) {
             return console.log(color('[SPAM]', 'red'), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`${command} [${args.length}]`), 'from', color(pushname), 'in', color(name || formattedTitle))
         }
-        //
 
         if (isCmd && !isGroupMsg) {
             console.log(color('[EXEC]'), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`${command} [${args.length}]`), 'from', color(pushname))
@@ -100,15 +102,20 @@ module.exports = HandleMsg = async (pell, message) => {
             console.log(color('[EXEC]'), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`${command} [${args.length}]`), 'from', color(pushname), 'in', color(name || formattedTitle))
         }
 
-
         if (isBanned) {
             return console.log(color('[BAN]', 'red'), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`${command} [${args.length}]`), 'from', color(pushname))
         }
 
         switch (command) {
-            case 'ping':
-                await pell.sendText(message.from, "Hello");
+            case 'menu':
+            case 'help':
+                await pell.sendText(from, menuId.textMenu(pushname))
+                    .then(() => ((isGroupMsg) && (isGroupAdmins)) ? pell.sendText(from, `Menu Admin Grup: *${prefix}menuadmin*`) : null)
                 break;
+            case 'ping':
+                await pell.sendText(from, `Pong!!!!\nSpeed: ${processTime(t, moment())} _Second_`)
+                break;
+                // Creator Menu
             case 'sticker':
             case 'stiker':
                 if ((isMedia || isQuotedImage) && args.length === 0) {
@@ -227,6 +234,8 @@ module.exports = HandleMsg = async (pell, message) => {
                     await pell.reply(from, 'Maaf, command sticker giphy hanya bisa menggunakan link dari giphy.  [Giphy Only]', id)
                 }
                 break
+
+                // Admin Group Menu
             case 'grouplink':
                 if (!isBotGroupAdmins) return pell.reply(from, 'Perintah ini hanya bisa di gunakan ketika bot menjadi admin', id)
                 if (isGroupMsg) {
@@ -390,6 +399,8 @@ module.exports = HandleMsg = async (pell, message) => {
                 }
                 pell.reply(from, 'Success kick all member', id)
                 break
+
+                // Owner Bot Menu
             case 'bc':
                 if (!isOwnerBot) return pell.reply(from, 'Perintah ini hanya untuk Owner bot!', id)
                 if (args.length == 0) return pell.reply(from, `Untuk broadcast ke semua chat ketik:\n${prefix}bc [isi chat]`)
@@ -442,6 +453,14 @@ module.exports = HandleMsg = async (pell, message) => {
                     }
                 }
                 break
+            case 'botstat': 
+                const loadedMsg = await pell.getAmountOfLoadedMessages()
+                const chatIds = await pell.getAllChatIds()
+                const groups = await pell.getAllGroups()
+                pell.sendText(from, `Status :\n- *${loadedMsg}* Loaded Messages\n- *${groups.length}* Group Chats\n- *${chatIds.length - groups.length}* Personal Chats\n- *${chatIds.length}* Total Chats`)
+                break
+
+
             case 'nulis':
                 if (args.length == 0) return pell.reply(from, `Membuat bot menulis teks yang dikirim menjadi gambar\nPemakaian: ${prefix}nulis [teks]\n\ncontoh: ${prefix}nulis i love you 3000`, id)
                 const nulisq2 = body.slice(7)
@@ -471,8 +490,8 @@ module.exports = HandleMsg = async (pell, message) => {
                 break
             case 'chord':
                 if (args.length == 0)
-                return pell.reply(from, `Untuk mencari lirik dan chord dari sebuah lagu\n\nPemakaian: ${prefix}chord [judul]\n\ncontoh: ${prefix}chord aku bukan boneka`, id)
-                const chord= body.slice(7)
+                    return pell.reply(from, `Untuk mencari lirik dan chord dari sebuah lagu\n\nPemakaian: ${prefix}chord [judul]\n\ncontoh: ${prefix}chord aku bukan boneka`, id)
+                const chord = body.slice(7)
                 const resChort = await pellapi.chord(chord);
                 pell.sendText(from, resChort, id)
                 break
