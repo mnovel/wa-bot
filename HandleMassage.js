@@ -112,6 +112,10 @@ module.exports = HandleMsg = async (pell, message) => {
                 await pell.sendText(from, menuId.textMenu(pushname))
                     .then(() => ((isGroupMsg) && (isGroupAdmins)) ? pell.sendText(from, `Menu Admin Grup: *${prefix}menuadmin*`) : null)
                 break;
+            case 'menuadmin':
+                await pell.sendText(from, menuId.textAdmin())
+                    .then(() => ((isGroupMsg) && (isGroupAdmins)) ? pell.sendText(from, `Menu Admin Grup: *${prefix}menuadmin*`) : null)
+                break;
             case 'ping':
                 await pell.sendText(from, `Pong!!!!\nSpeed: ${processTime(t, moment())} _Second_`)
                 break;
